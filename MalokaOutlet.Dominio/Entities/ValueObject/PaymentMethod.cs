@@ -1,7 +1,7 @@
 ﻿using MalokaOutlet.Domain.Entities.Enumarates;
 
 namespace MalokaOutlet.Domain.Entities.ValueObject {
-    class PaymentMethod {
+    public class PaymentMethod {
 
         public int Id { get; set; }
         public string Name { get; set; }
@@ -28,5 +28,7 @@ namespace MalokaOutlet.Domain.Entities.ValueObject {
                 return this.Id == (int)TypePaymentMethod.Undefined;
             }
         }
+
+    
     }
 }

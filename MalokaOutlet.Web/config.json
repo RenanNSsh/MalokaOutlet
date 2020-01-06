@@ -1,0 +1,7 @@
+{
+  "ConnectionStrings": {
+    "SqlServerConnection": "",
+    "MySqlConnection": "server=127.0.0.1;uid=root;pwd=12345;database=test",
+    "MalokaOutletDB": "server=localhost;uid=root;pwd=Voip_Nexus1;database=MalokaOutletDB"
+  }
+}

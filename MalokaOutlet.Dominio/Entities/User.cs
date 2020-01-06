@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
 namespace MalokaOutlet.Domain.Entities {
-    class User {
+    public class User: Entity {
         public int Id { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
@@ -11,7 +11,16 @@ namespace MalokaOutlet.Domain.Entities {
         /// <summary>
         /// A user can have none or many orders
         /// </summary>
-        public ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
 
+        public override void Validate() {
+            if (string.IsNullOrEmpty(this.Email)) {
+                AddValidationMessage("Email não foi informado");
+            }
+
+            if (string.IsNullOrEmpty(this.Password)) {
+                AddValidationMessage("Senha não foi informado");
+            }
+        }
     }
 }
