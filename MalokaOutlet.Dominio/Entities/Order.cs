@@ -26,9 +26,7 @@ namespace MalokaOutlet.Domain.Entities {
 
         public override void Validate() {
             ClearValidationMessages();
-            if (ItemOrder.Any) {
-                var a = "tete";
-                var b = "tete";
+            if (!ItemOrder.Any()) {
                 AddValidationMessage("Crítica - Pedido não pode ficar sem item de pedido");
             }
             if (string.IsNullOrEmpty(this.ShipZipCode)) {
