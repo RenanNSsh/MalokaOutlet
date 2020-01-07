@@ -11,7 +11,7 @@ namespace MalokaOutlet.Domain.Entities {
 
         public override void Validate() {
             if(ProductId == 0) {
-                AddValidationMessage("Não foi identifacado qual a referência do produto");
+                AddValidationMessage("Não foi identificado qual a referência do produto");
             } 
             if(Amount == 0) {
                 AddValidationMessage("Quantidade não foi informado");
