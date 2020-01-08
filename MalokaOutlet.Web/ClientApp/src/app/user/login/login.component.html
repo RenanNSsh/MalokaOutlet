@@ -1,0 +1,68 @@
+<div class="text-center d-flex access">
+    <div class="login d-flex align-items-center">
+        <form class="w-100">
+            <div class="alert alert-success" *ngIf="autheticatedUser">Usuário Autenticado com Sucesso</div>
+            <h1 class="pb-4">Login</h1>
+            <div class="input-group input-login">
+                <div class="input-group-prepend">
+                    <label for="email">
+                        <span class="input-group-text br-0" id="basic-addon1" 
+                        [ngClass]="{'is-invalid':email.invalid && (email.touched || email.dirty)}">
+                                <i class="fa fa-user fa-2x" aria-hidden="true"> </i>
+                        </span>
+                    </label>
+                </div>
+                <label for="email" class="sr-only">Email</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    placeholder="Informe o seu Email" 
+                    class="w-85" 
+                    #email="ngModel" 
+                    email 
+                    [(ngModel)]="user.email" 
+                    [ngClass]="{'is-invalid':email.invalid && (email.touched || email.dirty)}"
+                    required>
+                <div class="text-danger pt-2"*ngIf="email.invalid && (email.touched || email.dirty)">
+                    <span *ngIf="email.errors.required">O Email deve ser preenchido</span>
+                    <span *ngIf="email.errors.email">O Email deve estar no formato email@email</span>
+                </div>
+            </div>
+
+            
+            <div class="input-group input-login">
+                <div class="input-group-prepend">
+                    <label for="password">
+                        <span class="input-group-text br-0" id="basic-addon1" [ngClass]="{'is-invalid':password.invalid && (password.touched || password.dirty)}">
+                                <i class="fa fa-lock fa-2x" aria-hidden="true"> </i>
+                        </span>
+                    </label>
+                </div>
+                <label for="password" class="sr-only">Senha</label>
+                <input 
+                    [ngClass]="{'is-invalid':password.invalid && (password.touched || password.dirty)}" 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    placeholder="Senha" 
+                    class="w-85" 
+                    [(ngModel)]="user.password" 
+                    #password="ngModel" 
+                    required>
+                <div class="text-danger pt-2"*ngIf="password.invalid && (password.touched || password.dirty)">
+                    <span *ngIf="password.errors.required">A senha deve ser informada</span>
+                </div>
+            </div>
+            
+            <div class="d-flex justify-content-center mt-5 align-items-center">
+                <button class="btn btn-primary btn-block" type="submit" (click)="login($event)">Entrar</button>
+                <span class="ml-5">Cadastrar</span>
+            </div>
+        </form>
+    </div>
+    <div class="sign-in">
+        <img src="/assets/undraw_deliveries_131a.svg" alt="Ilustração Compras" title="Ilustração Compras" width="500">
+    </div>
+   
+</div>
