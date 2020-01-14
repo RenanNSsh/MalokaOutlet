@@ -1,23 +1,42 @@
 // Angular
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 // Project
 import { User } from 'src/app/models/user.model';
+import { Router, ActivatedRoute } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
     selector: 'hw-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
-
-    public autheticatedUser: boolean;
-    public user = new User();
+export class LoginComponent implements OnInit{
+    
+    autheticatedUser: boolean;
+    returnUrl: string;
+    message: string;
+    user = new User();
+    loading = false;
+    
+    constructor(private router: Router, private activatedRoute: ActivatedRoute, private userService: UserService){}
+        
+    ngOnInit(): void {
+        this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/'
+    }
 
     login($event: Event) {
+        this.loading = true;
         $event.preventDefault();
-        if (this.user.email === 'renan.sanches_123@hotmail.com' && this.user.password === '123') {
-            this.autheticatedUser = true;
-        }
+        this.userService.verifyUser(this.user).subscribe(user => {
+            this.userService.user = user;
+            this.userService.login(user);
+            this.router.navigate([this.returnUrl]);
+            this.loading = false;
+        }, error => {
+            console.log(error);
+            this.message = error.error;
+            this.loading = false;
+        });
     }
 }
