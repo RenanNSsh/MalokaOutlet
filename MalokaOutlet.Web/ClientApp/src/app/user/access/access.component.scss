@@ -1,0 +1,22 @@
+.access-container{
+    height: 85vh;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 10px;
+    padding: 5%;
+    background-color:rgb(251, 255, 254);
+    
+}
+.login-container, .signup-container{
+    transition: visibility 0.5s, opacity 0.5s linear;
+}
+
+.fadeOut{
+    opacity: 0;
+    visibility: hidden;
+}
+
+.fadeIn{
+    opacity: 1;
+    visibility: visible;
+}
+

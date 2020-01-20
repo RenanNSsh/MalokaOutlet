@@ -1,7 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
-.access{
-    height: 85vh;
+.grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.login{
     font-family: 'Montserrat', sans-serif;
 
     .sign-in{
@@ -9,19 +13,14 @@
         position: relative;
         display: flex;
         align-items: center;
-        width: 40%;
-        background-color: rgb(251, 255, 254);
         img{
             position: absolute;
             right:40px;
         }
     }
     
-    .login{
-        border-radius: 10px 0px 0px 10px;
-        width: 60%;
-        background-color:rgb(251, 255, 254);
-        padding: 10%;
+    .login-container{
+        padding: 4%;
 
         .form-control{
             margin-bottom:1.5rem;
@@ -37,6 +36,8 @@
         }
 
         .input-login{
+            
+	        flex-basis: 150px;
             .input-group-prepend{
                 margin-right:0;
             }
@@ -74,13 +75,29 @@
             color: #333;
         }
 
-        button{
+        button, .btn-hover:hover{
             border-radius: 40px;
             width:40%;
             padding-top:.7rem;
             padding-bottom:.7rem;
             background-color: #6c63ff
         }
+
+        .btn-hover{
+            padding-left:2rem;
+            padding-right: 2rem;
+        }
+
+        .btn-hover:hover{
+            cursor: pointer;
+            text-align: center;
+            color: rgb(251, 255, 254);
+        }
+        .btn-invisible{
+            border:none;
+            background-color: transparent;
+        }
+
         button:hover{
             background-color:rgb(251, 255, 254);
             color: #6c63ff

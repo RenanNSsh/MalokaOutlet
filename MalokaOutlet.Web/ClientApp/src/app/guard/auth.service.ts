@@ -5,16 +5,10 @@ import { Injectable } from "@angular/core";
 @Injectable({providedIn: 'root'})
 export class AuthService implements CanActivate{
     
-    constructor(private router: Router, private userService:UserService){
-
-    }
+    constructor(private router: Router, private userService:UserService){}
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean{
-        
         if(this.userService.isLogged()){
-            
-            console.log()
-
             return true;
         }
         this.router.navigate(['/login'],{queryParams: {returnUrl: state.url}})

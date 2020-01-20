@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+.login{
+    font-family: 'Montserrat', sans-serif;
+
+    .sign-in{
+        border-radius: 0px 10px 10px 0px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 40%;
+        img{
+            position: absolute;
+            right:40px;
+        }
+    }
+    
+    .login-container{
+        width: 60%;
+        padding: 10%;
+
+        .form-control{
+            margin-bottom:1.5rem;
+            border:none;
+            background-color:#dedcff;
+            border-radius:7px;
+            padding:1.5rem!important;
+        }
+        
+        .form-control::placeholder{
+
+            color:#333
+        }
+
+        .input-login{
+            .input-group-prepend{
+                margin-right:0;
+            }
+
+            input,.input-group-text{
+                border:none;
+                padding:.8rem;
+                border-radius:8px 0px 0px 8px;
+            }
+
+            .input-group-text{
+                background-color: #cbcae4;
+                color:#3f3d56;
+            }
+
+            input{
+                background-color:#e4e3fd;
+                padding-left:5px;
+                border-radius:0px 8px 8px 0px;
+            }
+
+            input:hover{
+                background-color:#dedcf5;
+            }
+
+            input::placeholder{
+
+                color:#333
+            }
+            margin-bottom:1.5rem;
+
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        button, .btn-hover:hover{
+            border-radius: 40px;
+            width:40%;
+            padding-top:.7rem;
+            padding-bottom:.7rem;
+            background-color: #6c63ff
+        }
+
+        .btn-hover{
+            padding-left:2rem;
+            padding-right: 2rem;
+        }
+
+        .btn-hover:hover{
+            cursor: pointer;
+            text-align: center;
+            color: rgb(251, 255, 254);
+        }
+        .btn-invisible{
+            border:none;
+            background-color: transparent;
+        }
+
+        button:hover{
+            background-color:rgb(251, 255, 254);
+            color: #6c63ff
+        }
+    }
+    
+}
+
+label{
+    margin-bottom:0;
+}
+
+.is-invalid{
+    border: 1px solid #dc3545!important;
+    
+}
+
+.is-invalid:focus{
+    border-color: #dc3545;
+    outline-width: 0;
+    box-shadow: 0 0 0 0.2rem rgba(220,53,69,.25);
+}
+
+.br-0{
+    border-right: 0!important;
+}

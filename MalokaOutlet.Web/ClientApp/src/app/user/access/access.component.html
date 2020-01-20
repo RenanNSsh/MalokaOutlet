@@ -1,0 +1,9 @@
+<div class="access-container">
+    <div class="login-container fade-in" *ngIf="showLogin" [ngClass]="{'fadeOut':!userLogin, 'fadeIn': userLogin}">
+        <hw-login (signupEvent)="signupUser($event)" ></hw-login>
+
+    </div>
+    <div class="signup-container fade-out" *ngIf="!showLogin"  [ngClass]="{'fadeIn':!userLogin, 'fadeOut':userLogin}">
+        <hw-signup (signupEvent)="signupUser($event)"></hw-signup>
+    </div>
+</div>

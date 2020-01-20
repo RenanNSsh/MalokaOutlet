@@ -1,0 +1,111 @@
+<div class="login d-flex">
+    <div class="login-container align-items-center w-100">
+        <form class="w-100">
+            
+            <h1 class="pb-4">Cadastro</h1>
+            <div class="grid">
+
+                <div class="input-group input-login">
+                    <div class="input-group-prepend">
+                        <label for="firstName">
+                            <span class="input-group-text br-0" id="basic-addon1"
+                                [ngClass]="{'is-invalid':firstName.invalid && (firstName.touched || firstName.dirty)}">
+                                <i class="fa fa-user fa-2x" aria-hidden="true"> </i>
+                            </span>
+                        </label>
+                    </div>
+                    <label for="firstName" class="sr-only">Nome</label>
+                    <input type="text" id="firstName" name="firstName" placeholder="Informe o seu Nome" class="w-85"
+                        #firstName="ngModel" firstName [(ngModel)]="user.name"
+                        [ngClass]="{'is-invalid':firstName.invalid && (firstName.touched || firstName.dirty)}" required>
+                    <div class="text-danger pt-2" *ngIf="firstName.invalid && (firstName.touched || firstName.dirty)">
+                        <span *ngIf="firstName.errors.required">O Nome deve ser preenchido</span>
+                    </div>
+                </div>
+    
+    
+                <div class="input-group input-login">
+                    <div class="input-group-prepend">
+                        <label for="lastName">
+                            <span class="input-group-text br-0" id="basic-addon1"
+                                [ngClass]="{'is-invalid':lastName.invalid && (lastName.touched || lastName.dirty)}">
+                                <i class="fa fa-user fa-2x" aria-hidden="true"> </i>
+                            </span>
+                        </label>
+                    </div>
+                    <label for="lastName" class="sr-only">Sobrenome</label>
+                    <input [ngClass]="{'is-invalid':lastName.invalid && (lastName.touched || lastName.dirty)}"
+                        type="text" id="lastName" lastName name="lastName" placeholder="Sobrenome" class="w-85"
+                        [(ngModel)]="user.lastName" #lastName="ngModel" required>
+                    <div class="text-danger pt-2" *ngIf="lastName.invalid && (lastName.touched || lastName.dirty)">
+                        <span *ngIf="lastName.errors.required">O Sobrenome deve ser informado</span>
+                    </div>
+                    
+                </div>
+                
+                <div class="input-group input-login">
+                    <div class="input-group-prepend">
+                        <label for="email">
+                            <span class="input-group-text br-0" id="basic-addon1" 
+                            [ngClass]="{'is-invalid':email.invalid && (email.touched || email.dirty)}">
+                                    <i class="fa fa-user fa-2x" aria-hidden="true"> </i>
+                            </span>
+                        </label>
+                    </div>
+                    <label for="email" class="sr-only">Email</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="Informe o seu Email" 
+                        class="w-85" 
+                        #email="ngModel" 
+                        email 
+                        [(ngModel)]="user.email" 
+                        [ngClass]="{'is-invalid':email.invalid && (email.touched || email.dirty)}"
+                        required>
+                    <div class="text-danger pt-2"*ngIf="email.invalid && (email.touched || email.dirty)">
+                        <span *ngIf="email.errors.required">O Email deve ser preenchido</span>
+                        <span *ngIf="email.errors.email">O Email deve estar no formato email@email</span>
+                    </div>
+                </div>
+    
+                <div class="input-group input-login">
+                    <div class="input-group-prepend">
+                        <label for="password">
+                            <span class="input-group-text br-0" id="basic-addon1"
+                                [ngClass]="{'is-invalid':password.invalid && (password.touched || password.dirty)}">
+                                <i class="fa fa-lock fa-2x" aria-hidden="true"> </i>
+                            </span>
+                        </label>
+                    </div>
+                    <label for="password" class="sr-only">Senha</label>
+                    <input [ngClass]="{'is-invalid':password.invalid && (password.touched || password.dirty)}"
+                        type="password" id="password" name="password" placeholder="Senha" class="w-85"
+                        [(ngModel)]="user.password" #password="ngModel" required>
+                    <div class="text-danger pt-2" *ngIf="password.invalid && (password.touched || password.dirty)">
+                        <span *ngIf="password.errors.required">A senha deve ser informada</span>
+                    </div>
+             
+                </div>
+           
+            </div>
+            <div class="text-danger pt-2" *ngIf="!!message">
+                {{message}}
+            </div>
+            <div class="d-flex justify-content-center mt-5 align-items-center">
+              
+                
+                <button class="ml-3 btn-hover btn-invisible" (click)="loginUser()">Entrar</button>
+                <button class="btn btn-primary btn-block" disabled *ngIf="loading;else loginButon">
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Carregando...
+                </button>
+                <ng-template #loginButon>
+                    <button class="btn btn-primary btn-block" type="submit" (click)="signup($event)">Cadastrar</button>
+                </ng-template>
+            </div>
+        </form>
+    </div>
+
+</div>

@@ -1,8 +1,7 @@
-<div class="text-center d-flex access">
-    <div class="login d-flex align-items-center">
+<div class="login d-flex">
+    <div class="login-container align-items-center">
         <form class="w-100">
-            <div class="alert alert-success" *ngIf="autheticatedUser">Usuário Autenticado com Sucesso</div>
-            <h1 class="pb-4">Login</h1>
+           <h1 class="pb-4">Login</h1>
             <div class="input-group input-login">
                 <div class="input-group-prepend">
                     <label for="email">
@@ -66,7 +65,7 @@
                 <ng-template #loginButon>
                     <button class="btn btn-primary btn-block" type="submit" (click)="login($event)">Entrar</button>
                 </ng-template>
-                <span class="ml-5">Cadastrar</span>
+                <button class="ml-3 btn-hover btn-invisible" (click)="signupUser()">Cadastrar</button>
             </div>
         </form>
     </div>

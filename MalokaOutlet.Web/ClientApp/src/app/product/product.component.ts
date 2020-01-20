@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ProductService } from './product.service';
+import { Product } from '../models/product.model';
 
 @Component({
     selector: 'hw-product',
@@ -8,25 +10,20 @@ import { Component } from '@angular/core';
 })
 export class ProductComponent {
 
-    private _name: string;
-    private _canSell: boolean;
+    product: Product;
 
-    constructor(){
-        this._name = 'Renan'; 
+    constructor(private productService: ProductService){
     }
 
-    public get name(): string {
-        return this._name;
-    }
-    public set name(name: string) {
-        this._name = name;
-    }
-
-    public get canSell(): boolean {
-        return this._canSell;
-    }
-    public set canSell(canSell: boolean) {
-        this._canSell = canSell;
+    register(){
+        this.productService.add(this.product).subscribe(
+            product => {
+                console.log(product);
+            },
+            error => {
+                console.log(error.error);
+            }
+        );
     }
 
 }

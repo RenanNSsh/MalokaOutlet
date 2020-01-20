@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 
 @Injectable({providedIn:'root'})
 export class UserService{
+    
  
     private baseUrl: string;
     private logged: Subject<boolean> = new Subject();
@@ -33,9 +34,15 @@ export class UserService{
     }
         
     verifyUser(user: User): Observable<User>{
-        const headers = new HttpHeaders().set('content-type','application/json');
-        console.log(this.baseUrl)
-        return this.http.post<User>(this.baseUrl+'api/user',user,{headers});
+        // return this.http.post<User>(this.baseUrl+'api/user/verify',user,{headers});
+        return this.http.post<User>(this.baseUrl+'api/user',user);
+
+    }
+
+    signup(user: User) {
+        return this.http.post<User>(this.baseUrl+'api/user',user);
+
+
     }
 
     $isLogged(): Observable<boolean>{

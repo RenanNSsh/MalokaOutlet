@@ -1,11 +1,10 @@
 // Angular
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 // Project
 import { User } from 'src/app/models/user.model';
 import { Router, ActivatedRoute } from '@angular/router';
-import { UserService } from '../user.service';
-
+import { UserService } from '../../user.service';
 @Component({
     selector: 'hw-login',
     templateUrl: './login.component.html',
@@ -13,11 +12,11 @@ import { UserService } from '../user.service';
 })
 export class LoginComponent implements OnInit{
     
-    autheticatedUser: boolean;
     returnUrl: string;
     message: string;
     user = new User();
     loading = false;
+    @Output() signupEvent: EventEmitter<boolean> = new EventEmitter();
     
     constructor(private router: Router, private activatedRoute: ActivatedRoute, private userService: UserService){}
         
@@ -38,5 +37,9 @@ export class LoginComponent implements OnInit{
             this.message = error.error;
             this.loading = false;
         });
+    }
+    
+    signupUser(){
+        this.signupEvent.emit(true);
     }
 }
