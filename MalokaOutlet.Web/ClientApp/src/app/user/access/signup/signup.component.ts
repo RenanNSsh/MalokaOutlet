@@ -12,6 +12,7 @@ export class SignUpComponent{
     returnUrl: string;
     message: string;
     user = new User();
+    created = false;
     loading = false;
     @Output() signupEvent: EventEmitter<boolean> = new EventEmitter();
     
@@ -27,7 +28,7 @@ export class SignUpComponent{
         this.userService.signup(this.user).subscribe(user => {
             this.userService.user = user;
             this.userService.login(user);
-            this.router.navigate([this.returnUrl]);
+            this.created = true;
             this.loading = false;
         }, error => {
             console.log(error);

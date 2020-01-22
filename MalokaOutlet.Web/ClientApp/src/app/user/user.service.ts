@@ -35,7 +35,7 @@ export class UserService{
         
     verifyUser(user: User): Observable<User>{
         // return this.http.post<User>(this.baseUrl+'api/user/verify',user,{headers});
-        return this.http.post<User>(this.baseUrl+'api/user',user);
+        return this.http.post<User>(this.baseUrl+'api/user/verify',user);
 
     }
 

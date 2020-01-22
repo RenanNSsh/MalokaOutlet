@@ -17,7 +17,7 @@ namespace MalokaOutlet.Web.Controllers
         }
 
         
-        [HttpPost]
+        [HttpPost("Verify")]
         public ActionResult VerifyUser([FromBody] User user) {
             try {
                 var userSearched = _userRepository.Get(user.Email, user.Password);
@@ -31,5 +31,20 @@ namespace MalokaOutlet.Web.Controllers
                 return BadRequest(exception.ToString());
             }
         }
+
+        [HttpPost]
+        public ActionResult Create([FromBody] User user) {
+            try {
+                var userAlreadyCreated = _userRepository.Get(user.Email);
+                if(userAlreadyCreated != null) {
+                    return BadRequest("Usuário já foi cadastrado no sistema");
+                }
+                _userRepository.Add(user);
+                return Ok();
+            }catch(Exception exception) {
+                return BadRequest(exception.ToString());
+            }
+        }
     }
+
 }

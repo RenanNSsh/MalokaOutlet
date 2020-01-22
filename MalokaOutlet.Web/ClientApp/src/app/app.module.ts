@@ -1,9 +1,11 @@
 // Angular
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
 
 // Dependencies
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -19,6 +21,10 @@ import { SignUpComponent } from './user/access/signup/signup.component';
 import { AccessComponent } from './user/access/access.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductService } from './product/product.service';
+import { SearchProductComponent } from './product/search/search.product.component';
+import { SearchShopComponent } from './shop/search/search.shop.component';
+
+registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
@@ -28,7 +34,9 @@ import { ProductService } from './product/product.service';
     ProductComponent,
     SignUpComponent,
     LoginComponent,
-    AccessComponent
+    AccessComponent,
+    SearchProductComponent,
+    SearchShopComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -39,10 +47,11 @@ import { ProductService } from './product/product.service';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'product', component: ProductComponent},
-      { path: 'login', component: AccessComponent}
+      { path: 'login', component: AccessComponent},
+      { path: 'search-product', component: SearchProductComponent}
     ])
   ],
-  providers: [AuthService, ProductService],
+  providers: [AuthService, ProductService,{provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

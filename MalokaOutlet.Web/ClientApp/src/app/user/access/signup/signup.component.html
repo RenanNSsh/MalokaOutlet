@@ -93,6 +93,9 @@
             <div class="text-danger pt-2" *ngIf="!!message">
                 {{message}}
             </div>
+            <div class="alert alert-success" *ngIf="created">
+                Usuário cadastrado com sucesso! <span (click)="loginUser()" class="font-weight-bold text dark nav-item">Clique aqui</span> para realizar o login.
+            </div>
             <div class="d-flex justify-content-center mt-5 align-items-center">
               
                 
@@ -103,6 +106,10 @@
                 </button>
                 <ng-template #loginButon>
                     <button class="btn btn-primary btn-block" type="submit" (click)="signup($event)">Cadastrar</button>
+                    <button class="btn btn-primary btn-block" disabled *ngIf="loading">
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Carregando...
+                    </button>
                 </ng-template>
             </div>
         </form>

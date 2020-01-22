@@ -17,8 +17,12 @@ namespace MalokaOutlet.Domain.Entities {
             validationMessages.Add(message);
         }
 
+        public string GetValidationMessages() {
+            return string.Join(". ", validationMessages);
+        }
+
         public abstract void Validate();
-        protected bool IsValidy {
+        public bool IsValidy {
             get {
                 return !validationMessages.Any();
             }

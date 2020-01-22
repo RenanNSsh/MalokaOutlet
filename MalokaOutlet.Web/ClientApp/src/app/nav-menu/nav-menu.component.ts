@@ -11,6 +11,9 @@ export class NavMenuComponent{
       
   constructor(private userService: UserService){}
 
+  get user(){
+    return this.userService.user;
+  }
 
   collapse() {
     this.isExpanded = false;
