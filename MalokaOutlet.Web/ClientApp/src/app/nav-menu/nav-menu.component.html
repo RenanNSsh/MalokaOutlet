@@ -10,25 +10,24 @@
         <ul class="navbar-nav flex-grow">
           <li class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
             <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
+          </li> 
+          <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="user?.isAdmin">
             <a class="nav-link text-dark" [routerLink]="['/search-product']">Produtos</a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="!userLogged(); else logout">
+          <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="!userLogged()">
             <a class="nav-link text-dark" [routerLink]="['/login']">Entrar</a>
           </li>
-          <ng-template #logout>
-            <!-- <li class="nav-item" (click)="userLogout()">
-              <span class="nav-link text-dark" >Sair</span>
-            </li> -->
-          </ng-template>
+    
           <li class="nav-item dropdown" *ngIf="userLogged()">
             <a class="nav-link dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false" id="menuLink" data-toggle="dropdown" >
-              {{user.name}}
+              {{user?.name}}
             </a>
             <ul class="dropdown-menu" aria-labelledby="menuLink">
               <li class="dropdown-item nav-item" role="menu" (click)="userLogout()">Sair</li>
             </ul>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/buy-product']"><img src="assets/images/34562.png" alt="Carrinho de Compras" style="width:25px;height:25px;"></a>
           </li>
         </ul>
       </div>

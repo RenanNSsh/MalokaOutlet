@@ -26,6 +26,8 @@ import { SearchProductComponent } from './product/search/search.product.componen
 import { SearchShopComponent } from './shop/search/search.shop.component';
 import { ProductShopComponent } from './shop/product/product.shop.component';
 import { BuyShopComponent } from './shop/buy/buy.shop.component';
+import { OrderService } from './order/order.service';
+import { SuccessPurchaseShop } from './shop/success-purchase/success-purchase.shop.component';
 
 registerLocaleData(localePt);
 
@@ -41,6 +43,7 @@ registerLocaleData(localePt);
     SearchProductComponent,
     SearchShopComponent,
     ProductShopComponent,
+    SuccessPurchaseShop,
     BuyShopComponent
   ],
   imports: [
@@ -56,11 +59,11 @@ registerLocaleData(localePt);
       { path: 'login', component: AccessComponent},
       { path: 'search-product', component: SearchProductComponent, canActivate: [AuthService]},
       { path: 'shop-product', component: ProductShopComponent},
-      { path: 'buy-product', component: BuyShopComponent, canActivate: [AuthService]}
+      { path: 'buy-product', component: BuyShopComponent, canActivate: [AuthService]},
+      { path: 'success-purchase', component: SuccessPurchaseShop, canActivate: [AuthService]},
     ])
   ],
-  providers: [AuthService, ProductService,{provide: LOCALE_ID, useValue: 'pt-BR'}],
+  providers: [AuthService, ProductService,OrderService,{provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-// { path: 'product', component: ProductComponent, },

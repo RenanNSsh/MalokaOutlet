@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit{
     message: string;
     user = new User();
     loading = false;
-    @Output() signupEvent: EventEmitter<boolean> = new EventEmitter();
+    @Output() signupEvent: EventEmitter<User> = new EventEmitter();
     
     constructor(private router: Router, private activatedRoute: ActivatedRoute, private userService: UserService){}
         
@@ -40,6 +40,6 @@ export class LoginComponent implements OnInit{
     }
     
     signupUser(){
-        this.signupEvent.emit(true);
+        this.signupEvent.emit(this.user);
     }
 }

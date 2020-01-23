@@ -8,6 +8,7 @@ namespace MalokaOutlet.Domain.Entities {
         public string Name { get; set; }
         public string LastName { get; set; }
 
+        public bool IsAdmin { get; set; }
         /// <summary>
         /// A user can have none or many orders
         /// </summary>

@@ -12,6 +12,7 @@ export class UserService{
     private baseUrl: string;
     private logged: Subject<boolean> = new Subject();
     private _user: User;
+    userSubject: Subject<User> = new Subject();
 
     constructor(private http: HttpClient, private router: Router,  @Inject('BASE_URL') baseUrl){
         this.baseUrl = baseUrl;
@@ -20,11 +21,13 @@ export class UserService{
 
     get user(): User{
         this.updateUser();
+        this.userSubject.next(this._user);
         return this._user;
     }
 
     set user(user: User){
         sessionStorage.setItem('user-authentified',JSON.stringify(user));
+        this.userSubject.next(this._user);
         this._user = user;
     }
 
@@ -41,7 +44,7 @@ export class UserService{
 
     signup(user: User) {
         return this.http.post<User>(this.baseUrl+'api/user',user);
-
+        
 
     }
 
@@ -54,12 +57,14 @@ export class UserService{
     }
 
     login(user: User): void {
+        this.userSubject.next(this.user);
         this.logged.next(true);
     }
 
     logout(): void {
         this._user = null;
         this.logged.next(false);
+        this.userSubject.next(null);
         this.router.navigate(['/login'])
     }
 }
