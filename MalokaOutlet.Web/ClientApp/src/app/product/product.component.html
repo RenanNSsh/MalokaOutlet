@@ -25,6 +25,7 @@
         type="text" 
         id="description" 
         name="description"
+        minlength="50"
         [ngClass]="{
             'is-valid':!!description.value && description.valid && (description.dirty || description.touched) 
         }" 
@@ -33,7 +34,11 @@
         placeholder="Descrição do Produto" 
         required 
         #description='ngModel' >
-   
+    <div class="invalid-feedback mb-2" *ngIf="description.invalid && (description.dirty || description.touched)">
+        <div *ngIf="description.errors.minlength">
+            Descrição do produto deve ter no mínimo 50 caracteres
+        </div>
+    </div>
     
     <label for="name" class="sr-only">Preço</label>
     <input 

@@ -9,6 +9,7 @@ import { registerLocaleData } from '@angular/common';
 
 // Dependencies
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TruncateModule } from 'ng2-truncate';
 
 // Project
 import { AppComponent } from './app.component';
@@ -23,6 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductService } from './product/product.service';
 import { SearchProductComponent } from './product/search/search.product.component';
 import { SearchShopComponent } from './shop/search/search.shop.component';
+import { ProductShopComponent } from './shop/product/product.shop.component';
+import { BuyShopComponent } from './shop/buy/buy.shop.component';
 
 registerLocaleData(localePt);
 
@@ -36,23 +39,28 @@ registerLocaleData(localePt);
     LoginComponent,
     AccessComponent,
     SearchProductComponent,
-    SearchShopComponent
+    SearchShopComponent,
+    ProductShopComponent,
+    BuyShopComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
+    TruncateModule,
     BrowserAnimationsModule,
     FormsModule,
     FontAwesomeModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'product', component: ProductComponent},
+      { path: 'product', component: ProductComponent, canActivate: [AuthService]},
       { path: 'login', component: AccessComponent},
-      { path: 'search-product', component: SearchProductComponent}
+      { path: 'search-product', component: SearchProductComponent, canActivate: [AuthService]},
+      { path: 'shop-product', component: ProductShopComponent},
+      { path: 'buy-product', component: BuyShopComponent, canActivate: [AuthService]}
     ])
   ],
   providers: [AuthService, ProductService,{provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-// { path: 'product', component: ProductComponent, canActivate: [AuthService]},
+// { path: 'product', component: ProductComponent, },
